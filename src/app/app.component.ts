@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularCrypto';
+
+  trataMaquetado(json:any) {
+    console.log(json);
+  }
 }

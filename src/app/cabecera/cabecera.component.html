@@ -1,0 +1,7 @@
+<button (click)="lanzaPeticionAjax()">Lista monedas</button>
+<select name="" id="" [(ngModel)]="monedaElegida">
+    <option [value]="moneda.id" *ngFor="let moneda of listaMonedas">
+        {{moneda.id}}
+    </option>
+</select>
+<button (click)="maquetarInformacion()">Maquetar información</button>
