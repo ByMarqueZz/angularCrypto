@@ -1,1 +1,7 @@
-<p>cuerpo works!</p>
+<div *ngIf="crypto.length">
+    <div *ngFor="let moneda of crypto">
+        <h2>{{moneda.name}}</h2><img [src]="moneda.image.small" [alt]="moneda.name">
+        Price: {{moneda.market_data.current_price.usd}} USD
+        <button (click)="borrarDiv(moneda.id)">Borrar</button>
+    </div>
+</div>

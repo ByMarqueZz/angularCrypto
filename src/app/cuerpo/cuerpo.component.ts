@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-cuerpo',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./cuerpo.component.css']
 })
 export class CuerpoComponent {
-  
+  @Input() crypto = new Array<any>();
+
+  @Output() borrar = new EventEmitter<any>();
+  borrarDiv(palabra:any) {
+    this.borrar.emit(palabra);
+  }
 }

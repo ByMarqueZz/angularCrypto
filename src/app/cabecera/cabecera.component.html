@@ -1,7 +1,6 @@
-<button (click)="lanzaPeticionAjax()">Lista monedas</button>
-<select name="" id="" [(ngModel)]="monedaElegida">
-    <option [value]="moneda.id" *ngFor="let moneda of listaMonedas">
-        {{moneda.id}}
-    </option>
-</select>
-<button (click)="maquetarInformacion()">Maquetar información</button>
+<input type="text" [(ngModel)]="palabra_filtrar" (keyup)="filtrarPorNombre()">
+<ul>
+    <li *ngFor="let moneda of arrayFiltrado">
+        {{moneda.name}} <button (click)="anadirParaBuscar(moneda.id)">+</button>
+    </li>
+</ul>

@@ -8,26 +8,35 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./cabecera.component.css']
 })
 export class CabeceraComponent {
-  listaMonedas = [{id:''}];
-  monedaElegida = '';
+
+  listaMonedas = new Array<any>();
+  arrayFiltrado = new Array<any>();
+  arrayBuscar = new Array<any>();
+  palabra_filtrar = '';
   @Output() nuevoDato = new EventEmitter<any>();
+
   constructor(private http: HttpClient) {
   }
-
+  ngOnInit() {
+    this.lanzaPeticionAjax();
+  }
   lanzaPeticionAjax() {
+    // obtiene la lista de monedas
     this.http.get('https://api.coingecko.com/api/v3/coins/').subscribe(
       (json:any) => {
           this.listaMonedas = json;
-          console.log(this.listaMonedas);
       }
     );
   }
-  maquetarInformacion() {
-    this.http.get('https://api.coingecko.com/api/v3/coins/'+this.monedaElegida).subscribe(
-      (json:any) => {
-        this.nuevoDato.emit(json);
-      }
-    );
+  filtrarPorNombre() {
+    this.arrayFiltrado = this.listaMonedas.filter((moneda) => moneda.name.toLowerCase().includes(this.palabra_filtrar.toLowerCase()));
   }
-
+  anadirParaBuscar(moneda:any) {
+    if (this.arrayBuscar.indexOf(moneda) == -1) {
+      this.arrayBuscar.push(moneda);
+    }
+    this.palabra_filtrar = '';
+    this.arrayFiltrado = [];
+    this.nuevoDato.emit(this.arrayBuscar);
+  }
 }

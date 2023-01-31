@@ -1,2 +1,2 @@
-<app-cabecera (nuevoDato)="trataMaquetado($event)"></app-cabecera>
-<app-cuerpo></app-cuerpo>
+<app-cabecera (nuevoDato)="TrataInformacionCryptos($event)"></app-cabecera>
+<app-cuerpo [crypto]="crypto" (borrar)="borrarPalabraBuscar($event)"></app-cuerpo>
