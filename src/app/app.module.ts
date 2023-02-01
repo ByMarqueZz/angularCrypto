@@ -13,6 +13,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
     CabeceraComponent,
     CuerpoComponent,
     PieComponent,
+    HomeComponent,
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,

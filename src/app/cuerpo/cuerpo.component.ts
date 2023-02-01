@@ -3,7 +3,7 @@ import { Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Firestore, collectionData, collection, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { addDoc } from 'firebase/firestore';
+import { addDoc, deleteDoc, doc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-cuerpo',
@@ -11,18 +11,16 @@ import { addDoc } from 'firebase/firestore';
   styleUrls: ['./cuerpo.component.css']
 })
 export class CuerpoComponent {
-  arrayBuscar: Observable<any>;
+  arrayBuscar$: Observable<any>;
+  firebase: any;
   constructor(firestore: Firestore,private http: HttpClient) {
+    this.firebase = firestore;
     const collectionBD = collection(firestore, 'items');
-    this.arrayBuscar = collectionData(query(collectionBD, where("nombre", "==", "pepe")));
-    this.nuevoDato.emit(this.arrayBuscar);
+    this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", "pepe")));
   }
   @Input() crypto = new Array<any>();
 
   @Output() borrar = new EventEmitter<any>();
-  borrarDiv(palabra:any) {
-    this.borrar.emit(palabra);
-  }
   listaMonedas = new Array<any>();
   arrayFiltrado = new Array<any>();
   palabra_filtrar = '';
@@ -43,9 +41,15 @@ export class CuerpoComponent {
   filtrarPorNombre() {
     this.arrayFiltrado = this.listaMonedas.filter((moneda) => moneda.name.toLowerCase().includes(this.palabra_filtrar.toLowerCase()));
   }
-  anadirParaBuscar(moneda:any) {
+  async anadirParaBuscar(moneda:any) {
+    await addDoc(collection(this.firebase, "items"), {
+      moneda: moneda,
+      nombre: "marquez"
+    });
     this.palabra_filtrar = '';
     this.arrayFiltrado = [];
-    this.nuevoDato.emit(this.arrayBuscar);
+  }
+  async borrarDiv(id:any){
+    await deleteDoc(doc(this.firebase, "items", id));
   }
 }
