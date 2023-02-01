@@ -15,6 +15,7 @@ export class CuerpoComponent {
   constructor(firestore: Firestore,private http: HttpClient) {
     const collectionBD = collection(firestore, 'items');
     this.arrayBuscar = collectionData(query(collectionBD, where("nombre", "==", "pepe")));
+    this.nuevoDato.emit(this.arrayBuscar);
   }
   @Input() crypto = new Array<any>();
 
