@@ -1,1 +1,6 @@
-<p>pie works!</p>
+<ul>
+    <li *ngFor="let dato of item$ | async">
+        {{dato.nombre}}
+        {{dato.moneda}}
+    </li>
+</ul>

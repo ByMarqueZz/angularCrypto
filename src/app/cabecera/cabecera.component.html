@@ -1,6 +1,17 @@
-<input type="text" [(ngModel)]="palabra_filtrar" (keyup)="filtrarPorNombre()">
-<ul>
-    <li *ngFor="let moneda of arrayFiltrado">
-        {{moneda.name}} <button (click)="anadirParaBuscar(moneda.id)">+</button>
-    </li>
-</ul>
+<header>
+    <div>
+        <img src="assets/img/logo.webp" alt="logo" class="logoPagina">
+    </div>
+    <div>
+        <ul ngbNav #nav="ngbNav" class="nav-tabs">
+            <li ngbNavItem>
+                <a routerLink="inicio" ngbNavLink>Inicio</a>
+            </li>
+            <li ngbNavItem>
+                <a routerLink="cuerpo" ngbNavLink>Portafolio</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+

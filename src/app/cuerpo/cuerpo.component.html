@@ -1,7 +1,20 @@
-<div *ngIf="crypto.length">
-    <div *ngFor="let moneda of crypto">
-        <h2>{{moneda.name}}</h2><img [src]="moneda.image.small" [alt]="moneda.name">
-        Price: {{moneda.market_data.current_price.usd}} USD
-        <button (click)="borrarDiv(moneda.id)">Borrar</button>
+<div class="main">
+    <div id="barraFiltrado">
+        <h3>Buscar criptomoneda:</h3>
+        <input type="text" [(ngModel)]="palabra_filtrar" (keyup)="filtrarPorNombre()" name="filtrar">
+        <ul id="barraFiltradoUl">
+            <li *ngFor="let moneda of arrayFiltrado">
+                {{moneda.name}} <button class="botonFav" (click)="anadirParaBuscar(moneda.id)">⭐</button>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="fav" *ngIf="crypto.length">
+        <div *ngFor="let moneda of crypto">
+            <h2>{{moneda.name}}</h2><img [src]="moneda.image.small" [alt]="moneda.name">
+            Price: {{moneda.market_data.current_price.usd}} USD
+            <button (click)="borrarDiv(moneda.id)">Borrar</button>
+        </div>
     </div>
 </div>
+
