@@ -10,13 +10,28 @@ import { AuthService } from '../auth.service';
 })
 export class PortfolioComponent {
   arrayBuscar$: Observable<any>;
+  emailUsuario = '';
   constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService) {
+    this.auth.devolverUsuario().then((user:any) => {
+      if (user != null) {
+        this.emailUsuario = user.email;
+        const collectionBD = collection(firestore, 'items');
+        this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", this.emailUsuario)));
+        this.TrataInformacionCryptos();
+      }
+    });
     const collectionBD = collection(firestore, 'items');
-    this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", "marquez")));
+    this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", this.emailUsuario)));
   }
   ngOnInit() {
-    this.TrataInformacionCryptos();
-    this.auth.comprobarSiEstaLogeado();
+
+    // coge la promesa de auth y comprueba si está logeado
+    this.auth.comprobarSiEstaLogeado().then((res:any) => {
+      if (res == false) {
+        window.location.href = '/login';
+      }
+    });
+
   }
   crypto = new Array<any>();
 

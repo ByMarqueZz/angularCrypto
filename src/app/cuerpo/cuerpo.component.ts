@@ -13,8 +13,14 @@ import { AuthService } from '../auth.service';
 })
 export class CuerpoComponent {
   firebase: any;
+  emailUsuario = '';
   constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService) {
     this.firebase = firestore;
+    this.auth.devolverUsuario().then((user:any) => {
+      if (user != null) {
+        this.emailUsuario = user.email;
+      }
+    });
   }
   @Input() crypto = new Array<any>();
 
@@ -40,6 +46,11 @@ export class CuerpoComponent {
     this.arrayFiltrado = this.listaMonedas.filter((moneda) => moneda.name.toLowerCase().includes(this.palabra_filtrar.toLowerCase()));
   }
   async anadirParaBuscar(moneda:any) {
+    if (moneda == 'cerrarLista') {
+      this.palabra_filtrar = '';
+      this.arrayFiltrado = [];
+      return;
+    }
     // comprueba si existe la moneda en el array que nos traemos de la base de datos
     // si existe no hace nada y si no existe la añade
     for(let i = 0; i < this.crypto.length; i++){
@@ -51,7 +62,7 @@ export class CuerpoComponent {
     }
     await setDoc(doc(this.firebase, "items", moneda), {
       moneda: moneda,
-      nombre: 'marquez'
+      nombre: this.emailUsuario
     });
     this.palabra_filtrar = '';
     this.arrayFiltrado = [];

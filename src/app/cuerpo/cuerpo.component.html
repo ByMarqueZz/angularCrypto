@@ -2,6 +2,7 @@
     <div id="barraFiltrado">
         <h3>Buscar criptomoneda:</h3>
         <input type="text" [(ngModel)]="palabra_filtrar" (keyup)="filtrarPorNombre()" name="filtrar">
+        <button style="margin-left: 1%;" class="btn btn-primary" *ngIf="arrayFiltrado.length > 0" (click)="anadirParaBuscar('cerrarLista')">Cerrar lista X</button>
         <ul id="barraFiltradoUl">
             <li *ngFor="let moneda of arrayFiltrado">
                 {{moneda.name}} <button class="botonFav" (click)="anadirParaBuscar(moneda.id)">⭐</button>
@@ -23,7 +24,7 @@
                 <td>{{moneda.name}}</td>
                 <td>{{moneda.market_data.current_price.usd}} USD</td>
                 <td>{{moneda.market_data.total_volume.usd}} USD</td>
-                <td><button (click)="borrarDiv(moneda.id)">Borrar</button></td>
+                <td><button class="btn btn-primary" (click)="borrarDiv(moneda.id)">Borrar</button></td>
             </tr>
         </table>
     </div>

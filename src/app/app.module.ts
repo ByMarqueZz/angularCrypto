@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginComponent } from './login/login.component';
-import { AuthService } from './auth.service';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -28,6 +28,7 @@ import { AuthService } from './auth.service';
     HomeComponent,
     PortfolioComponent,
     LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

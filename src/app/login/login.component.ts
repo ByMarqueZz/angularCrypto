@@ -13,4 +13,10 @@ export class LoginComponent {
   iniciarSesion() {
     this.auth.iniciarSesionEmail(this.email, this.password);
   }
+  registrate() {
+    this.auth.registrate(this.email, this.password);
+  }
+  iniciarSesionGoogle() {
+    this.auth.iniciarSesionGoogle();
+  }
 }
