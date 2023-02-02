@@ -39,7 +39,7 @@ import { AuthService } from './auth.service';
     provideFirestore(() => getFirestore()),
     AppRoutingModule
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 
