@@ -3,7 +3,7 @@ import { Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Firestore, collectionData, collection, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { addDoc, deleteDoc, doc } from 'firebase/firestore';
+import { setDoc, deleteDoc, doc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-cuerpo',
@@ -39,7 +39,16 @@ export class CuerpoComponent {
     this.arrayFiltrado = this.listaMonedas.filter((moneda) => moneda.name.toLowerCase().includes(this.palabra_filtrar.toLowerCase()));
   }
   async anadirParaBuscar(moneda:any) {
-    await addDoc(collection(this.firebase, "items"), {
+    // comprueba si existe la moneda en el array que nos traemos de la base de datos
+    // si existe no hace nada y si no existe la añade
+    for(let i = 0; i < this.crypto.length; i++){
+      if(this.crypto[i].id == moneda){
+        this.palabra_filtrar = '';
+        this.arrayFiltrado = [];
+        return;
+      }
+    }
+    await setDoc(doc(this.firebase, "items", moneda), {
       moneda: moneda,
       nombre: "marquez"
     });
