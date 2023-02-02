@@ -10,11 +10,22 @@
     </div>
     
     <div id="fav" *ngIf="crypto.length">
-        <div *ngFor="let moneda of crypto">
-            <h2>{{moneda.name}}</h2><img [src]="moneda.image.small" [alt]="moneda.name">
-            Price: {{moneda.market_data.current_price.usd}} USD
-            <button (click)="borrarDiv(moneda.id)">Borrar</button>
-        </div>
+        <table>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Volumen</th>
+                <th>Borrar</th>
+            </tr>
+            <tr *ngFor="let moneda of crypto">
+                <td><img [src]="moneda.image.small" [alt]="moneda.name"></td>
+                <td>{{moneda.name}}</td>
+                <td>{{moneda.market_data.current_price.usd}} USD</td>
+                <td>{{moneda.market_data.total_volume.usd}} USD</td>
+                <td><button (click)="borrarDiv(moneda.id)">Borrar</button></td>
+            </tr>
+        </table>
     </div>
 </div>
 

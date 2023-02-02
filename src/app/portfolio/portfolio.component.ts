@@ -27,10 +27,8 @@ export class PortfolioComponent {
       for (let i = 0; i < element.length; i++) {
       this.http.get('https://api.coingecko.com/api/v3/coins/'+element[i].moneda).subscribe(
       (json:any) => {
-        for (let i = 0; i < this.crypto.length; i++) {
-          if(this.crypto[i].id == json.id){
-            return;
-          }
+        if(this.crypto.find((crypto:any) => crypto.id == json.id)){
+          return;
         }
         this.crypto.push(json);
       });
