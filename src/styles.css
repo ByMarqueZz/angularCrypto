@@ -1,12 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-
-.logoPagina {
-    width: 100px;
-    height: 100px;
-}
-
-body {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
