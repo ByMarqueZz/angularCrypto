@@ -59,7 +59,6 @@ export class AuthService {
         if (user) {
           this.isLoged = true;
           this.usuario = user;
-          console.log(this.usuario);
           resolve(true);
         } else {
           this.isLoged = false;

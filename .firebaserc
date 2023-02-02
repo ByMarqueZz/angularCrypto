@@ -1,13 +1,4 @@
 {
-  "targets": {
-    "angular-crypto-fefcb": {
-      "hosting": {
-        "angularCrypto": [
-          "angular-crypto-fefcb"
-        ]
-      }
-    }
-  },
   "projects": {
     "default": "angular-crypto-fefcb"
   }
