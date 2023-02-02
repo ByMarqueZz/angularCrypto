@@ -11,12 +11,9 @@ import { addDoc, deleteDoc, doc } from 'firebase/firestore';
   styleUrls: ['./cuerpo.component.css']
 })
 export class CuerpoComponent {
-  arrayBuscar$: Observable<any>;
   firebase: any;
   constructor(firestore: Firestore,private http: HttpClient) {
     this.firebase = firestore;
-    const collectionBD = collection(firestore, 'items');
-    this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", "pepe")));
   }
   @Input() crypto = new Array<any>();
 

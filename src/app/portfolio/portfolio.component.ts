@@ -13,6 +13,7 @@ export class PortfolioComponent {
   constructor(firestore: Firestore,private http: HttpClient) {
     const collectionBD = collection(firestore, 'items');
     this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", "marquez")));
+    // this.arrayBuscar$ = collectionData(collectionBD);
   }
   ngOnInit() {
     this.TrataInformacionCryptos();
@@ -22,8 +23,8 @@ export class PortfolioComponent {
 
   TrataInformacionCryptos() {
     // pinta las cryptos que sigues en favoritos
-    this.crypto = [];
     this.arrayBuscar$.forEach((element:any) => {
+      this.crypto = [];
       console.log(element)
       for (let i = 0; i < element.length; i++) {
       this.http.get('https://api.coingecko.com/api/v3/coins/'+element[i].moneda).subscribe(
