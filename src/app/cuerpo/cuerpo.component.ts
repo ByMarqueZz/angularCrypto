@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Firestore, collectionData, collection, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { setDoc, deleteDoc, doc } from 'firebase/firestore';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-cuerpo',
@@ -12,7 +13,7 @@ import { setDoc, deleteDoc, doc } from 'firebase/firestore';
 })
 export class CuerpoComponent {
   firebase: any;
-  constructor(firestore: Firestore,private http: HttpClient) {
+  constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService) {
     this.firebase = firestore;
   }
   @Input() crypto = new Array<any>();
@@ -50,7 +51,7 @@ export class CuerpoComponent {
     }
     await setDoc(doc(this.firebase, "items", moneda), {
       moneda: moneda,
-      nombre: "marquez"
+      nombre: 'marquez'
     });
     this.palabra_filtrar = '';
     this.arrayFiltrado = [];

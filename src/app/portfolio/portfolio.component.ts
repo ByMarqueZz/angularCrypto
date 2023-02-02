@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Firestore, collectionData, collection, query, where } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
 })
 export class PortfolioComponent {
   arrayBuscar$: Observable<any>;
-  constructor(firestore: Firestore,private http: HttpClient) {
+  constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService) {
     const collectionBD = collection(firestore, 'items');
     this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", "marquez")));
   }
   ngOnInit() {
     this.TrataInformacionCryptos();
+    this.auth.comprobarSiEstaLogeado();
   }
   crypto = new Array<any>();
 

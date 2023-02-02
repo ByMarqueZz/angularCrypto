@@ -1,0 +1,13 @@
+<form>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="email" id="username" placeholder="Enter username" [(ngModel)]="email">
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" [(ngModel)]="password">
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="iniciarSesion()">Iniciar Sesión</button>
+</form>

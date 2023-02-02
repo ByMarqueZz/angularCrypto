@@ -15,6 +15,8 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './auth.service';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     PieComponent,
     HomeComponent,
     PortfolioComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
     provideFirestore(() => getFirestore()),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 
