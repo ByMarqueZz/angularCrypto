@@ -23,8 +23,8 @@
             <tr *ngFor="let moneda of crypto">
                 <td><img [src]="moneda.image.small" [alt]="moneda.name"></td>
                 <td>{{moneda.name}}</td>
-                <td>{{moneda.market_data.current_price.usd}} USD</td>
-                <td>{{moneda.market_data.total_volume.usd}} USD</td>
+                <td>{{moneda.market_data.current_price.eur}} EUR</td>
+                <td>{{moneda.market_data.total_volume.eur}} EUR</td>
                 <td><button class="btn btn-primary" (click)="verDetalle(moneda.id)">Ver detalle</button></td>
                 <td><button class="btn btn-primary" (click)="borrarDiv(moneda.id)">Borrar</button></td>
             </tr>

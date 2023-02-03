@@ -10,29 +10,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent {
+  isLoged:any;
   arrayBuscar$: Observable<any>;
   emailUsuario = '';
   constructor(firestore: Firestore, private auth:AuthService, private router:Router) {
-    this.auth.devolverUsuario().then((user:any) => {
-      if (user != null) {
-        this.emailUsuario = user.email;
+    this.auth.comprobarSiEstaLogeado()
+      if (this.auth.isLoged != null) {
+        this.emailUsuario = this.auth.isLoged.email;
         const collectionBD = collection(firestore, 'items');
         this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", this.emailUsuario)));
         this.TrataInformacionCryptos();
+        // setInterval(() => {
+        //   this.TrataInformacionCryptos();
+        // }, 5000);
       }
-    });
     const collectionBD = collection(firestore, 'items');
     this.arrayBuscar$ = collectionData(query(collectionBD, where("nombre", "==", this.emailUsuario)));
   }
   ngOnInit() {
 
     // coge la promesa de auth y comprueba si está logeado
-    this.auth.comprobarSiEstaLogeado().then((res:any) => {
-      if (res == false) {
-        this.router.navigate(['/inicio']);
-      }
-    });
-
+    if (this.auth.isLoged == false) {
+      this.router.navigate(['/login']);
+    }
   }
   crypto = new Array<any>();
 

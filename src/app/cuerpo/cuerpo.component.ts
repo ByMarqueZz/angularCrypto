@@ -16,11 +16,10 @@ export class CuerpoComponent {
   emailUsuario = '';
   constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService, private router:Router) {
     this.firebase = firestore;
-    this.auth.devolverUsuario().then((user:any) => {
-      if (user != null) {
-        this.emailUsuario = user.email;
+    this.auth.comprobarSiEstaLogeado()
+      if (this.auth.isLoged != null) {
+        this.emailUsuario = this.auth.isLoged.email;
       }
-    });
   }
   @Input() crypto = new Array<any>();
 

@@ -21,9 +21,11 @@
         <p *ngIf="moneda.market_data.market_cap.eur != ''"><b>Market cap: </b> {{ moneda.market_data.market_cap.eur}}</p>
         <p *ngIf="moneda.genesis_date != ''"><b>Fecha en la que surgió: </b> {{moneda.genesis_date}}</p>
     </div>
-    <div class="cuartaSeccion" *ngIf="moneda.description.en != ''">
+    <div class="cuartaSeccion">
         <b>Descripción: </b>
-        <p >{{moneda.description.en}}</p>
+        <p *ngIf="moneda.description.es != ''">{{moneda.description.es}}</p>
+        <p *ngIf="moneda.description.en != '' && moneda.description.es == ''">{{moneda.description.en}}</p>
+        <p *ngIf="moneda.description.en != '' && moneda.description.es != ''">Descripción no disponible</p>
     </div>
     <div class="quintaSeccion">
         <b>Enlaces: </b>

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoged = false;
+  isLoged: any;
   usuario: any;
   constructor(private auth:Auth, private router:Router, private http: HttpClient) { }
   iniciarSesionGoogle() {
@@ -56,35 +56,34 @@ export class AuthService {
   }
   comprobarSiEstaLogeado() {
     // crea promesa para que se ejecute antes de que se ejecute el resto del código
-    return new Promise((resolve, reject) => {
-      onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          this.isLoged = true;
-          this.usuario = user;
-          resolve(true);
-        } else {
-          this.isLoged = false;
-          this.usuario = null;
-          resolve(false);
-        }
-      });
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.isLoged = user;
+        this.usuario = user;
+      } else {
+        this.isLoged = false;
+        this.usuario = null;
+      }
     });
   }
-  devolverUsuario() {
-    return new Promise((resolve, reject) => {
-      onAuthStateChanged(this.auth, (user) => {
-        if (user) {
-          this.isLoged = true;
-          this.usuario = user;
-          resolve(user);
-        } else {
-          this.isLoged = false;
-          this.usuario = null;
-          resolve(user);
-        }
-      });
-    });
+  ngOnInit() {
+    this.comprobarSiEstaLogeado();
   }
+  // devolverUsuario() {
+  //   return new Promise((resolve, reject) => {
+  //     onAuthStateChanged(this.auth, (user) => {
+  //       if (user) {
+  //         this.isLoged = true;
+  //         this.usuario = user;
+  //         resolve(user);
+  //       } else {
+  //         this.isLoged = false;
+  //         this.usuario = null;
+  //         resolve(user);
+  //       }
+  //     });
+  //   });
+  // }
   cerrarSesion() {
     this.auth.signOut();
   }
