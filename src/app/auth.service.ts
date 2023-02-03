@@ -46,7 +46,7 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        window.location.href = '/portfolio';
+        this.router.navigate(['/portafolio']);
         // ...
       })
       .catch((error) => {
