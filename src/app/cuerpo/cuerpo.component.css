@@ -1,5 +1,5 @@
 #fav table {
-    width: 100%;
+    max-width: 100%;
 }
 #fav table tr {
     border: 1px solid #000;
@@ -51,5 +51,8 @@
 @media (max-width: 700px) {
     #main {
         flex-direction: column;
+    }
+    #fav table {
+        max-width: 90%;
     }
 }
