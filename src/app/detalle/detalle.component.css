@@ -1,0 +1,71 @@
+.primeraSeccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 5% 0% 3% 0%;
+}
+
+.segundaSeccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 3%;
+    padding-top: 2%;
+    border-top: 1px solid black;
+}
+.segundaSeccionDiv {
+    margin-top: 2%;
+    display: flex;
+    gap: 20px;
+}
+
+.lowPrice {
+    background-color: #FF0000;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2%;
+    border-radius: 16px;
+    width: 100%;
+}
+
+.highPrice {
+    background-color: #1eff00;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 16px;
+    padding: 2%;
+    width: 100%;
+}
+
+.terceraSeccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid black;
+    padding-top: 2%;
+}
+
+.cuartaSeccion {
+    border-top: 1px solid black;
+    padding-top: 2%;
+    text-align: center;
+    padding-bottom: 2%;
+}
+.cuartaSeccion p {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.quintaSeccion {
+    text-align: center;
+    border-top: 1px solid black;
+    padding-top: 2%;
+}
+.quintaSeccion ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+}

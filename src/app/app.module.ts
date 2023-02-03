@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
+import { DetalleComponent } from './detalle/detalle.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { LogoutComponent } from './logout/logout.component';
     PortfolioComponent,
     LoginComponent,
     LogoutComponent,
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,

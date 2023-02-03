@@ -5,9 +5,6 @@
     border: 1px solid #000;
     text-align: center;
 }
-#fav table td {
-    cursor: pointer;
-}
 #barraFiltrado {
     margin-top: 5%;
     text-align: center;

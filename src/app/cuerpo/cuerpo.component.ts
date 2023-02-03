@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Input, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Firestore, collectionData, collection, query, where } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { Firestore } from '@angular/fire/firestore';
 import { setDoc, deleteDoc, doc } from 'firebase/firestore';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cuerpo',
@@ -14,7 +14,7 @@ import { AuthService } from '../auth.service';
 export class CuerpoComponent {
   firebase: any;
   emailUsuario = '';
-  constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService) {
+  constructor(firestore: Firestore,private http: HttpClient, private auth:AuthService, private router:Router) {
     this.firebase = firestore;
     this.auth.devolverUsuario().then((user:any) => {
       if (user != null) {
@@ -33,6 +33,9 @@ export class CuerpoComponent {
   ngOnInit() {
     this.lanzaPeticionAjax();
     
+  }
+  verDetalle(id:any) {
+    this.router.navigate(['/detalle/' + id]);
   }
   lanzaPeticionAjax() {
     // obtiene la lista de monedas

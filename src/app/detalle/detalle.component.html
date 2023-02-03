@@ -1,0 +1,58 @@
+<div class="main" *ngIf="moneda != null">
+    <div class="primeraSeccion">
+        <img src="{{moneda.image.small}}" alt="imagen del producto">
+        <h2 *ngIf="moneda.name != ''">{{moneda.name}}</h2>
+    </div>
+    <div class="segundaSeccion">
+        <h2 *ngIf="moneda.market_data.current_price.eur != ''">{{moneda.market_data.current_price.eur}} €</h2>
+        <div class="segundaSeccionDiv">
+            <div class="lowPrice">
+                <label for="lowPrice"><b>Low 24h</b></label>
+                <p name="highPrice" class="lowPrice" *ngIf="moneda.market_data.low_24h.eur != ''">{{moneda.market_data.low_24h.eur}} €</p>
+            </div>
+            <div class="highPrice">
+                <label for="highPrice"><b>High 24h</b></label>
+                <p class="highPrice" name="highPrice" *ngIf="moneda.market_data.high_24h.eur != ''">{{moneda.market_data.high_24h.eur}} €</p>
+            </div>
+        </div>
+    </div>
+    <div class="terceraSeccion">
+        <p *ngIf="moneda.market_data.last_updated != ''"><b>Actualizado por última vez:</b> {{moneda.market_data.last_updated}}</p>
+        <p *ngIf="moneda.market_data.market_cap.eur != ''"><b>Market cap: </b> {{ moneda.market_data.market_cap.eur}}</p>
+        <p *ngIf="moneda.genesis_date != ''"><b>Fecha en la que surgió: </b> {{moneda.genesis_date}}</p>
+    </div>
+    <div class="cuartaSeccion" *ngIf="moneda.description.en != ''">
+        <b>Descripción: </b>
+        <p >{{moneda.description.en}}</p>
+    </div>
+    <div class="quintaSeccion">
+        <b>Enlaces: </b>
+        <ul>
+            <li *ngIf="moneda.links.homepage[0] != ''">
+                <a [href]="moneda.links.homepage[0]"><img style="width: 30px;" src="{{moneda.image.small}}" alt="imagen del producto"> {{moneda.name}} home page</a>
+                
+            </li>
+            <li *ngIf="moneda.links.repos_url.github.length > 0">
+                <a [href]="moneda.links.repos_url.github[0]"><img style="width: 30px;" src="../../assets/img/git.svg" alt="imagen del producto"> {{moneda.name}} github</a>
+            </li>
+            <li *ngIf="moneda.links.twitter_screen_name != ''">
+                <a [href]="'https://twitter.com/'+moneda.links.twitter_screen_name"><img style="width: 30px;" src="../../assets/img/twitter.png" alt="imagen del producto"> {{moneda.name}} twitter</a>
+            </li>
+            <li *ngIf="moneda.links.facebook_username != ''">
+                <a [href]="'https://facebook.com/'+moneda.links.facebook_username"><img style="width: 30px;" src="../../assets/img/face.png" alt="imagen del producto"> {{moneda.name}} facebook</a>
+            </li>
+        </ul>
+    </div>
+    <div class="descripcion">
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+    
+    
+</div>

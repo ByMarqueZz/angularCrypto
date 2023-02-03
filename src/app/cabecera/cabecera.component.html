@@ -11,16 +11,16 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" routerLink="inicio">Home</a>
+                <a class="nav-link" aria-current="page" routerLink="inicio" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="portfolio">Portfolio</a>
+                <a class="nav-link" routerLink="portfolio" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Portfolio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="login" *ngIf="!sesion">Iniciar Sesion</a>
+                <a class="nav-link" routerLink="login" *ngIf="!sesion" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Iniciar Sesion</a>
               </li>
               <li class="nav-item" *ngIf="sesion">
-                <a class="nav-link" routerLink="logout">Cerrar Sesión</a>
+                <a class="nav-link" routerLink="logout" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">Cerrar Sesión</a>
               </li>
             </ul>
           </div>

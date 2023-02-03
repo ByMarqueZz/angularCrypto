@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent {
-  constructor(private auth:AuthService) {}
+  constructor(private auth:AuthService, private router:Router) {}
   ngOnInit() {
     this.auth.cerrarSesion();
-    window.location.href = '/inicio';
+    this.router.navigate(['/inicio']);
   }
 }

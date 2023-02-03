@@ -10,8 +10,7 @@ export class CabeceraComponent {
   sesion = false;
   emailUsuario = '';
   fotoUsuario = '';
-  constructor(private auth:AuthService) {}
-  ngOnInit() {
+  constructor(private auth:AuthService) {
     this.auth.comprobarSiEstaLogeado().then((res:any) => {
       if (res == true) {
         this.addUserHeader();
@@ -21,6 +20,7 @@ export class CabeceraComponent {
       }
     });
   }
+
   addUserHeader() {
     this.auth.devolverUsuario().then((user:any) => {
       if (user != null) {

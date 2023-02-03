@@ -1,5 +1,27 @@
 {
   "hosting": {
+    "rewrites": [ 
+      {
+      "source": "/inicio",
+      "destination": "/inicio"
+      },
+      {
+      "source": "/portfolio",
+      "destination": "/portfolio"
+      },
+      {
+      "source": "/detalle/:id",
+      "destination": "/detalle/:id"
+      },
+      {
+      "source": "/login",
+      "destination": "/login"
+      },
+      {
+      "source": "/**",
+      "destination": "/inicio"
+      } 
+    ],
     "public": "dist",
     "ignore": [
       "firebase.json",

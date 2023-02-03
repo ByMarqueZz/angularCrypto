@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, onAuthStateChanged } from "@angular/fire/auth";
 import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +10,11 @@ import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword  } 
 export class AuthService {
   isLoged = false;
   usuario: any;
-  constructor(private auth:Auth) { }
+  constructor(private auth:Auth, private router:Router, private http: HttpClient) { }
   iniciarSesionGoogle() {
     signInWithPopup(this.auth, new GoogleAuthProvider()).then((userCredential) => {
       const user = userCredential.user;
-      window.location.href = '/portfolio';
+      this.router.navigate(['/portafolio']);
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -27,7 +29,7 @@ export class AuthService {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        window.location.href = '/portfolio';
+        this.router.navigate(['/portafolio']);
         // ...
       })
       .catch((error) => {
@@ -86,6 +88,8 @@ export class AuthService {
   cerrarSesion() {
     this.auth.signOut();
   }
-
+  getInfoCrypto(moneda:any) {
+    return this.http.get('https://api.coingecko.com/api/v3/coins/'+moneda)
+  }
   
 }
